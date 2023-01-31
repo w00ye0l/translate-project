@@ -1,8 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-import Home from "../views/HomeTap.vue";
-import Country from "../views/SelectCountry.vue";
+import Home from "../views/HomeView.vue";
+import Country from "../views/CountryView.vue";
 
 Vue.use(VueRouter);
 
