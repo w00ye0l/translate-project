@@ -1,6 +1,5 @@
 <template>
   <div class="main">
-    <!-- <HeadComponent></HeadComponent> -->
     <div class="home tap1">
       <img class="logo" src="../assets/logo.png" alt="" />
       <h2 class="title">
@@ -16,13 +15,8 @@
 </template>
 
 <script>
-// import HeadComponent from "@/components/HeadComponent.vue";
-
 export default {
   name: "HomeTap",
-  components: {
-    // HeadComponent,
-  },
 };
 </script>
 
