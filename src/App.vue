@@ -23,13 +23,12 @@ export default {
   methods: {
     selectCountry(country) {
       this.country = country;
-      localStorage.setItem("country", this.country);
-      localStorage.removeItem("place");
+      sessionStorage.setItem("country", this.country);
       // console.log("현재 저장된 나라 " + this.country);
     },
     selectPlace(place) {
       this.place = place;
-      localStorage.setItem("place", this.place);
+      sessionStorage.setItem("place", this.place);
       // console.log("현재 저장된 장소 " + this.place);
     },
   },

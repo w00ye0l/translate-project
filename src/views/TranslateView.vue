@@ -23,8 +23,8 @@ export default {
     place: "",
   }),
   created() {
-    this.country = localStorage.getItem("country");
-    this.place = localStorage.getItem("place");
+    this.country = sessionStorage.getItem("country");
+    this.place = sessionStorage.getItem("place");
   },
   components: {
     HeadComponent,
