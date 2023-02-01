@@ -4,7 +4,7 @@
     <NavComponent></NavComponent>
     <div class="main">
       <div class="translate__div">
-        <p>{{ propsCountry }} | {{ propsPlace }}</p>
+        <p>{{ country }} | {{ place }}</p>
       </div>
       <!-- <p>{{ propsCountry }} | {{ propsPlace }}</p> -->
     </div>
@@ -18,7 +18,14 @@ import NavComponent from "@/components/NavComponent.vue";
 export default {
   name: "TranslateView",
   props: ["propsCountry", "propsPlace"],
-  data: () => ({}),
+  data: () => ({
+    country: "",
+    place: "",
+  }),
+  created() {
+    this.country = localStorage.getItem("country");
+    this.place = localStorage.getItem("place");
+  },
   components: {
     HeadComponent,
     NavComponent,
