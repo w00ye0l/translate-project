@@ -16,13 +16,9 @@ export default {};
 
 <style scoped>
 .nav {
-  position: absolute;
-  left: 50%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-  gap: 5rem;
-  transform: translate(-50%, -20%);
 }
 .logo {
   width: 5rem;
