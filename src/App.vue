@@ -3,32 +3,29 @@
     <router-view
       v-on:selectCountry="selectCountry"
       v-on:selectPlace="selectPlace"
-      v-bind:propsCountry="country"
-      v-bind:propsPlace="place"
     >
     </router-view>
-    <!-- <p>{{ country }} | {{ place }}</p> -->
+    <Spinner v-if="this.$store.state.loadingStatus"></Spinner>
   </div>
 </template>
 
 <script>
+import Spinner from "@/components/SpinnerComponent.vue";
+
 export default {
   name: "App",
-  data() {
-    return {
-      country: "",
-      place: "",
-    };
+  components: {
+    Spinner,
   },
   methods: {
     selectCountry(country) {
-      this.country = country;
-      sessionStorage.setItem("country", this.country);
+      this.$store.state.country = country;
+      sessionStorage.setItem("country", this.$store.state.country);
       // console.log("현재 저장된 나라 " + this.country);
     },
     selectPlace(place) {
-      this.place = place;
-      sessionStorage.setItem("place", this.place);
+      this.$store.state.place = place;
+      sessionStorage.setItem("place", this.$store.state.place);
       // console.log("현재 저장된 장소 " + this.place);
     },
   },
