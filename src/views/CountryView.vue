@@ -5,13 +5,12 @@
     <div class="main">
       <div
         class="country__div"
-        v-for="country in countries"
+        v-for="country in $store.state.countries"
         v-bind:key="country"
         v-on:click="selectCountry($event)"
       >
         <p>{{ country }}</p>
       </div>
-      <!-- <p>{{ propsCountry }} | {{ propsPlace }}</p> -->
     </div>
   </div>
 </template>
@@ -22,10 +21,7 @@ import NavComponent from "@/components/NavComponent.vue";
 
 export default {
   name: "CountryView",
-  props: ["propsCountry", "propsPlace"],
-  data: () => ({
-    countries: ["미국", "일본", "중국", "영국", "태국"],
-  }),
+  data: () => ({}),
   components: {
     HeadComponent,
     NavComponent,

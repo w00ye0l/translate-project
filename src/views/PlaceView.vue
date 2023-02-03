@@ -5,13 +5,12 @@
     <div class="main">
       <div
         class="place__div"
-        v-for="place in places"
+        v-for="place in $store.state.places"
         v-bind:key="place"
         v-on:click="selectPlace($event)"
       >
         <p>{{ place }}</p>
       </div>
-      <!-- <p>{{ propsCountry }} | {{ propsPlace }}</p> -->
     </div>
   </div>
 </template>
@@ -22,10 +21,7 @@ import NavComponent from "@/components/NavComponent.vue";
 
 export default {
   name: "PlaceView",
-  props: ["propsCountry", "propsPlace"],
-  data: () => ({
-    places: ["식당", "카페", "관광지", "숙소", "직접 입력"],
-  }),
+  data: () => ({}),
   components: {
     HeadComponent,
     NavComponent,
