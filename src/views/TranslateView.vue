@@ -3,17 +3,25 @@
     <HeadComponent></HeadComponent>
     <NavComponent></NavComponent>
     <div class="main">
-      <textarea
-        rows="10"
-        class="translate__obj input__textarea"
-        v-model="input"
-        placeholder="번역할 문장을 입력해주세요."
-      ></textarea>
+      <div class="translate__container">
+        <label class="subtitle" for="">한국에서는 이렇게</label>
+        <textarea
+          rows="10"
+          class="translate__obj input__textarea"
+          v-model="input"
+          placeholder="번역할 문장을 입력해주세요."
+        ></textarea>
+      </div>
 
       <button class="translate__btn" v-on:click="getData()">번역하기</button>
 
-      <div class="translate__obj">
-        <p class="result__p">{{ result }}</p>
+      <div class="translate__container">
+        <label class="subtitle" for=""
+          >{{ this.$store.state.country }}에서는 이렇게</label
+        >
+        <div class="translate__obj">
+          <p class="result__p">{{ result }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -26,48 +34,22 @@ import QueryString from "qs";
 
 export default {
   name: "TranslateView",
-  props: ["propsCountry", "propsPlace"],
   data: () => ({
-    country: "",
-    countries: [
-      "미국",
-      "일본",
-      "중국",
-      "베트남",
-      "인도네시아",
-      "태국",
-      "독일",
-      "러시아",
-      "스페인",
-      "이탈리아",
-      "프랑스",
-    ],
-    languages: [
-      "en",
-      "ja",
-      "zh-CN",
-      "vi",
-      "id",
-      "th",
-      "de",
-      "ru",
-      "es",
-      "it",
-      "fr",
-    ],
-    lang: "",
     input: "",
     result: "",
+    lang: "",
   }),
-  created() {
-    this.country = sessionStorage.getItem("country");
-    this.place = sessionStorage.getItem("place");
-    this.lang = this.languages[this.countries.indexOf(this.country)];
-    // this.getData();
-  },
   components: {
     HeadComponent,
     NavComponent,
+  },
+  created() {
+    this.$store.state.country = sessionStorage.getItem("country");
+    this.$store.state.place = sessionStorage.getItem("place");
+    this.lang =
+      this.$store.state.languages[
+        this.$store.state.countries.indexOf(this.$store.state.country)
+      ];
   },
   methods: {
     async getData() {
@@ -88,19 +70,29 @@ export default {
       };
 
       try {
+        this.$store.commit("startSpinner");
+        console.log(this.$store.state.loadingStatus);
+
         await this.$axios
           .post("/papago/n2mt", params, config)
           .then((res) => {
+            this.$store.commit("endSpinner");
+            console.log(this.$store.state.loadingStatus);
+
             if (res.status == 200) {
               console.log(res.data.message.result.translatedText);
               this.result = res.data.message.result.translatedText;
             }
           })
-          .catch((error) => {
-            console.log("실패", error);
+          .catch((err) => {
+            console.log("실패", err);
+            this.$store.commit("endSpinner");
+            console.log(this.$store.state.loadingStatus);
           });
-      } catch (error) {
-        console.log("실패", error);
+      } catch (err) {
+        console.log("실패", err);
+        this.$store.commit("endSpinner");
+        console.log(this.$store.state.loadingStatus);
       }
     },
   },
@@ -115,13 +107,20 @@ export default {
   justify-content: space-evenly;
   align-items: center;
 }
+.translate__container {
+  margin: 0.5rem 0;
+}
+.subtitle {
+  font-size: 20px;
+  font-weight: bold;
+}
 .translate__obj {
-  margin: 2rem 0;
+  margin-top: 1rem;
   padding: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 18rem;
+  width: 14rem;
   height: 10rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
   border-radius: 1rem;
@@ -129,9 +128,10 @@ export default {
 .input__textarea {
   border: 0;
   resize: none;
-  font-size: 18px;
+  font-size: 16px;
 }
 .translate__btn {
+  margin: 1rem 0;
   padding: 0.8rem;
   color: white;
   font-size: 18px;
@@ -143,7 +143,7 @@ export default {
 .result__p {
   width: 100%;
   height: 100%;
-  min-width: 18rem;
+  min-width: 14rem;
   min-height: 5rem;
   word-wrap: break-word;
   font-size: 18px;
