@@ -1,7 +1,7 @@
 <template>
   <div class="nav">
-    <div>
-      <p>화살표</p>
+    <div v-on:click="$router.go(-1)">
+      <p>뒤로</p>
     </div>
     <img class="logo" src="../assets/logo.png" alt="" />
     <div>
