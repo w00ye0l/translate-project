@@ -57,13 +57,13 @@ export default {
   font-size: 1.3rem;
   font-weight: bold;
   text-decoration: none;
-  background: linear-gradient(to left, #0d6152, #18816ee5);
-  box-shadow: 0 0 5px #0a3f35e5;
+  background: linear-gradient(to left, #168d77, #18bea3);
+  box-shadow: 0 0 5px #0f5f50;
   border-radius: 2rem;
   transition: all 0.5s;
 }
 .btn:hover {
-  box-shadow: 0 0 10px #0a3f35e5;
+  box-shadow: 0 0 10px #0f5f50;
 }
 .tap2 {
   display: none;
