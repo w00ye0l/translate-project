@@ -21,11 +21,15 @@ export default {
 </script>
 
 <style scoped>
+/* body {
+} */
 .main {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #1c9c85;
+  background: linear-gradient(140deg, #28d8b8, #8bada7e8);
 }
 .home {
   display: flex;
@@ -39,24 +43,27 @@ export default {
   height: 15rem;
   padding: 2rem;
   border-radius: 3rem;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 0 20px #ffffff;
+  background-color: #fff;
 }
 .title {
   padding: 0 5rem;
   text-align: center;
+  color: #0a3f35;
 }
 .btn {
   padding: 1rem 2rem;
-  color: white;
+  color: #fff;
   font-size: 1.3rem;
   font-weight: bold;
   text-decoration: none;
-  background-color: #1c9c85;
-  border-radius: 1rem;
-  transition: 0.5s all;
+  background: linear-gradient(to left, #0d6152, #18816ee5);
+  box-shadow: 0 0 5px #0a3f35e5;
+  border-radius: 2rem;
+  transition: all 0.5s;
 }
 .btn:hover {
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px #0a3f35e5;
 }
 .tap2 {
   display: none;
