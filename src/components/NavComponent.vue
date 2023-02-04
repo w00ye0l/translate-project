@@ -29,8 +29,8 @@ export default {};
   align-items: center;
 }
 .logo {
-  width: 4rem;
-  height: 4rem;
+  width: 3rem;
+  height: 3rem;
 }
 .nav-icon:hover {
   cursor: pointer;
