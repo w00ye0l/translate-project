@@ -1,11 +1,19 @@
 <template>
   <div class="nav">
     <div v-on:click="$router.go(-1)">
-      <p>뒤로</p>
+      <!-- <font-awesome-icon icon="fa-solid fa-arrow-left" /> -->
+      <font-awesome-icon
+        class="nav-icon"
+        :icon="['fas', 'arrow-left']"
+        size="xl"
+      />
+      <!-- <font-awesome-icon class="fa-2x" icon="fa-arrow-left" /> -->
     </div>
     <img class="logo" src="../assets/logo.png" alt="" />
     <div>
-      <p>더보기</p>
+      <!-- <font-awesome-icon class="fa-2x" icon="fa-bars" /> -->
+      <font-awesome-icon class="nav-icon" :icon="['fas', 'bars']" size="xl" />
+      <!-- <font-awesome-icon icon="fa-solid fa-bars" /> -->
     </div>
   </div>
 </template>
@@ -21,7 +29,10 @@ export default {};
   align-items: center;
 }
 .logo {
-  width: 5rem;
-  height: 5rem;
+  width: 4rem;
+  height: 4rem;
+}
+.nav-icon:hover {
+  cursor: pointer;
 }
 </style>
