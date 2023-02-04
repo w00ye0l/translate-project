@@ -29,7 +29,7 @@ export default {
   justify-content: center;
   align-items: center;
   background-color: #1c9c85;
-  background: linear-gradient(140deg, #28d8b8, #8bada7e8);
+  background: linear-gradient(to bottom, #28d8b8, #b1cfcae8);
 }
 .home {
   display: flex;
@@ -43,7 +43,7 @@ export default {
   height: 15rem;
   padding: 2rem;
   border-radius: 3rem;
-  box-shadow: 0 0 20px #ffffff;
+  box-shadow: 0 0 20px #fff;
   background-color: #fff;
 }
 .title {
