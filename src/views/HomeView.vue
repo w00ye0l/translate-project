@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div class="home tap1">
-      <img class="logo" src="../assets/logo.png" alt="" />
+      <img class="logo" src="../assets/images/logo.png" alt="" />
       <h2 class="title">
         어디서든<br />자신감 있게<br />말할 수 있도록<br />도와주는 친구
       </h2>
@@ -16,20 +16,18 @@
 
 <script>
 export default {
-  name: "HomeTap",
+  name: "HomeView",
 };
 </script>
 
 <style scoped>
-/* body {
-} */
 .main {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #1c9c85;
-  background: linear-gradient(to bottom, #28d8b8, #b1cfcae8);
+  background: linear-gradient(to bottom, #27b198, #cceee8e8);
 }
 .home {
   display: flex;
