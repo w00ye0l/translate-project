@@ -9,7 +9,7 @@
       />
       <!-- <font-awesome-icon class="fa-2x" icon="fa-arrow-left" /> -->
     </div>
-    <img class="logo" src="../assets/logo.png" alt="" />
+    <img class="logo" src="../assets/images/logo.png" alt="" />
     <div>
       <!-- <font-awesome-icon class="fa-2x" icon="fa-bars" /> -->
       <font-awesome-icon class="nav-icon" :icon="['fas', 'bars']" size="xl" />
