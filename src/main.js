@@ -5,6 +5,9 @@ import axios from "axios";
 import { store } from "./store";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { inject } from "@vercel/analytics";
+
+inject();
 
 import { fas } from "@fortawesome/free-solid-svg-icons";
 
