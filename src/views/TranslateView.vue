@@ -46,10 +46,7 @@ export default {
   created() {
     this.$store.state.country = sessionStorage.getItem("country");
     this.$store.state.place = sessionStorage.getItem("place");
-    this.lang =
-      this.$store.state.languages[
-        this.$store.state.countries.indexOf(this.$store.state.country)
-      ];
+    this.lang = this.$store.state.countries[this.$store.state.country];
   },
   methods: {
     async getData() {
@@ -101,14 +98,16 @@ export default {
 
 <style scoped>
 .main {
-  margin: 2rem 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
+  margin: 2rem auto;
+  width: 70vw;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
 }
 .translate__container {
-  margin: 0.5rem 0;
+  padding: 0.5rem 1rem;
+  width: 100%;
 }
 .subtitle {
   font-size: 20px;
@@ -120,7 +119,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 14rem;
+  width: 100%;
   height: 10rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
   border-radius: 1rem;
@@ -131,8 +130,10 @@ export default {
   font-size: 16px;
 }
 .translate__btn {
-  margin: 1rem 0;
+  margin: 2rem 0;
   padding: 0.8rem;
+  width: 10rem;
+  height: 3rem;
   color: white;
   font-size: 18px;
   font-weight: bold;
@@ -143,9 +144,7 @@ export default {
 .result__p {
   width: 100%;
   height: 100%;
-  min-width: 14rem;
-  min-height: 5rem;
   word-wrap: break-word;
-  font-size: 18px;
+  font-size: 20px;
 }
 </style>
