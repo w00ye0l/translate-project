@@ -21,12 +21,10 @@ export default {
     selectCountry(country) {
       this.$store.state.country = country;
       sessionStorage.setItem("country", this.$store.state.country);
-      // console.log("현재 저장된 나라 " + this.country);
     },
     selectPlace(place) {
       this.$store.state.place = place;
       sessionStorage.setItem("place", this.$store.state.place);
-      // console.log("현재 저장된 장소 " + this.place);
     },
   },
 };
