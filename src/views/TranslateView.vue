@@ -3,6 +3,21 @@
     <HeadComponent></HeadComponent>
     <NavComponent></NavComponent>
     <div class="main">
+      <div class="select__container">
+        <select class="select__country" v-model="countrySelected">
+          <option value="" hidden disabled>
+            {{ getCountry }}
+          </option>
+          <option
+            v-for="(key, country) in this.$store.state.countries"
+            v-bind:key="country"
+            v-bind:value="country"
+          >
+            {{ country }}
+          </option>
+        </select>
+      </div>
+
       <div class="translate__container">
         <label class="subtitle" for="">한국에서는 이렇게</label>
         <textarea
@@ -35,6 +50,8 @@ import QueryString from "qs";
 export default {
   name: "TranslateView",
   data: () => ({
+    countrySelected: "",
+    placeSelected: "",
     input: "",
     result: "",
     lang: "",
@@ -44,9 +61,26 @@ export default {
     NavComponent,
   },
   created() {
-    this.$store.state.country = sessionStorage.getItem("country");
-    this.$store.state.place = sessionStorage.getItem("place");
+    // this.$store.state.country = sessionStorage.getItem("country");
+    // this.$store.state.place = sessionStorage.getItem("place");
+
     this.lang = this.$store.state.countries[this.$store.state.country];
+  },
+  computed: {
+    getCountry() {
+      return this.$store.getters.getCountry;
+    },
+    getPlace() {
+      return this.$store.getters.getPlace;
+    },
+  },
+  watch: {
+    countrySelected(val) {
+      this.$store.dispatch("setCountry", val);
+    },
+    placeSelected(val) {
+      this.$store.dispatch("setPlace", val);
+    },
   },
   methods: {
     async getData() {
@@ -59,10 +93,10 @@ export default {
       const config = {
         baseURL: "https://proxy.cors.sh/https://openapi.naver.com/v1",
         headers: {
-          "x-cors-api-key": "temp_0a5af26e928255d482e7a5efdebeecca",
+          "x-cors-api-key": process.env.VUE_APP_X_CORS_API_KEY,
           "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-          "X-Naver-Client-Id": "2Rql9F4A4qbEI2DhUe2i",
-          "X-Naver-Client-Secret": "QGlM99Zhql",
+          "X-Naver-Client-Id": process.env.VUE_APP_X_NAVER_CLIENT_ID,
+          "X-Naver-Client-Secret": process.env.VUE_APP_X_NAVER_CLIENT_SECRET,
         },
       };
 
@@ -104,6 +138,21 @@ export default {
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
+}
+.select__container {
+  margin-bottom: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 5vw;
+}
+.select__country {
+  width: 5rem;
+  font-size: 1rem;
+  color: #08523f;
+  background-color: #b4e1d9;
+  border: 0;
+  border-radius: 10px;
 }
 .translate__container {
   padding: 0.5rem 1rem;
