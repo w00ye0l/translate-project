@@ -36,7 +36,8 @@ export default {
       console.log(event.currentTarget.querySelector("p").innerText);
       const text = event.currentTarget.querySelector("p").innerText;
       console.log(text);
-      this.$emit("selectCountry", text);
+      this.$store.dispatch("setCountry", text);
+      // this.$emit("selectCountry", text);
       this.$router.push("place");
     },
   },
