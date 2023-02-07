@@ -147,7 +147,9 @@ export default {
   gap: 5vw;
 }
 .select__country {
-  width: 5rem;
+  padding: 0.3rem;
+  max-width: 10rem;
+  width: 30vw;
   font-size: 1rem;
   color: #08523f;
   background-color: #b4e1d9;
