@@ -6,6 +6,7 @@ import { store } from "./store";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { inject } from "@vercel/analytics";
+import VueClipboard from "vue-clipboard2";
 
 inject();
 
@@ -16,6 +17,8 @@ library.add(fas);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 Vue.config.productionTip = false;
 Vue.prototype.$axios = axios;
+VueClipboard.config.autoSetContainer = true;
+Vue.use(VueClipboard);
 
 new Vue({
   router,
