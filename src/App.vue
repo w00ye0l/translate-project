@@ -1,10 +1,6 @@
 <template>
   <div id="app">
-    <router-view
-      v-on:selectCountry="selectCountry"
-      v-on:selectPlace="selectPlace"
-    >
-    </router-view>
+    <router-view> </router-view>
     <Spinner v-if="this.$store.state.loadingStatus"></Spinner>
   </div>
 </template>
@@ -18,14 +14,14 @@ export default {
     Spinner,
   },
   methods: {
-    selectCountry(country) {
-      this.$store.state.country = country;
-      sessionStorage.setItem("country", this.$store.state.country);
-    },
-    selectPlace(place) {
-      this.$store.state.place = place;
-      sessionStorage.setItem("place", this.$store.state.place);
-    },
+    // selectCountry(country) {
+    //   this.$store.state.country = country;
+    //   sessionStorage.setItem("country", this.$store.state.country);
+    // },
+    // selectPlace(place) {
+    //   this.$store.state.place = place;
+    //   sessionStorage.setItem("place", this.$store.state.place);
+    // },
   },
 };
 </script>
