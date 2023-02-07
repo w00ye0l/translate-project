@@ -1,9 +1,16 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import createPersistedState from "vuex-persistedstate";
+import axios from "axios";
 
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
+  plugins: [
+    createPersistedState({
+      paths: ["country", "place", "talkList"],
+    }),
+  ],
   state: {
     country: "",
     place: "",
@@ -42,6 +49,7 @@ export const store = new Vuex.Store({
       "fr",
     ],
     loadingStatus: false,
+    talkList: {},
   },
   mutations: {
     startSpinner(state) {
@@ -51,6 +59,70 @@ export const store = new Vuex.Store({
     endSpinner(state) {
       console.log("end");
       state.loadingStatus = false;
+    },
+    STORE_COUNTRY(state, payload) {
+      state.country = payload;
+    },
+    STORE_PLACE(state, payload) {
+      state.place = payload;
+    },
+    STORE_TALKLIST(state, payload) {
+      state.talkList = payload;
+    },
+  },
+  actions: {
+    setCountry(context, country) {
+      context.commit("STORE_COUNTRY", country);
+    },
+    setPlace(context, place) {
+      context.commit("STORE_PLACE", place);
+    },
+    setCountryTalkList(context, val) {
+      context.commit("STORE_COUNTRY", val);
+      const state = this.state;
+
+      let lang = state.countries[state.country];
+      let place = state.places[state.place];
+      let file = `${lang}_${place}.json`;
+
+      axios
+        .get(`./translate/${file}`)
+        .then((res) => {
+          // console.log(res.data);
+          context.commit("STORE_TALKLIST", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    setPlaceTalkList(context, val) {
+      context.commit("STORE_PLACE", val);
+      const state = this.state;
+
+      let lang = state.countries[state.country];
+      let place = state.places[state.place];
+      let file = `${lang}_${place}.json`;
+
+      axios
+        .get(`./translate/${file}`)
+        .then((res) => {
+          // console.log(res.data);
+          context.commit("STORE_TALKLIST", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
+  getters: {
+    getCountry(state) {
+      return state.country;
+    },
+    getPlace(state) {
+      return state.place;
+    },
+    getTalkList(state) {
+      return state.talkList;
     },
   },
 });
