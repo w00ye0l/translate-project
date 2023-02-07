@@ -42,9 +42,11 @@ export default {
   methods: {
     selectPlace(event) {
       const text = event.currentTarget.querySelector("p").innerText;
-      console.log(text);
-      this.$emit("selectPlace", text);
-      this.$router.push("translate");
+      // console.log(text);
+      // this.$store.dispatch("setPlace", text);
+      this.$store.dispatch("setPlaceTalkList", text);
+      // this.$emit("selectPlace", text);
+      this.$router.push("talk");
     },
     translateSelf() {
       this.$router.push("translate");
@@ -84,8 +86,8 @@ export default {
 }
 .self {
   width: 100%;
-  max-width: 700px;
-  height: 5rem;
+  max-width: 800px;
+  height: 7rem;
 }
 .place__div:hover {
   cursor: pointer;
@@ -117,7 +119,7 @@ export default {
     height: 5rem;
   }
   .self {
-    height: 7rem;
+    height: 9rem;
   }
   .place__name {
     font-size: 1.5rem;
@@ -125,8 +127,11 @@ export default {
 }
 
 @media (max-width: 576px) {
+  .place__div {
+    margin: 4vw auto;
+  }
   .place__name {
-    font-size: 5vw;
+    font-size: 6vw;
   }
 }
 </style>
