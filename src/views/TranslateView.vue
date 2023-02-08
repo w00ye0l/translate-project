@@ -54,7 +54,7 @@ export default {
     placeSelected: "",
     input: "",
     result: "",
-    lang: "",
+    // lang: "",
   }),
   components: {
     HeadComponent,
@@ -63,8 +63,7 @@ export default {
   created() {
     // this.$store.state.country = sessionStorage.getItem("country");
     // this.$store.state.place = sessionStorage.getItem("place");
-
-    this.lang = this.$store.state.countries[this.$store.state.country];
+    // this.lang = this.$store.state.countries[this.$store.state.country];
   },
   computed: {
     getCountry() {
@@ -86,7 +85,7 @@ export default {
     async getData() {
       const params = QueryString.stringify({
         source: "ko",
-        target: this.lang,
+        target: this.$store.state.countries[this.countrySelected],
         text: this.input,
       });
 
@@ -99,6 +98,8 @@ export default {
           "X-Naver-Client-Secret": process.env.VUE_APP_X_NAVER_CLIENT_SECRET,
         },
       };
+
+      console.log(config);
 
       try {
         this.$store.commit("startSpinner");
