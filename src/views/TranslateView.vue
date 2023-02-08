@@ -85,7 +85,7 @@ export default {
     async getData() {
       const params = QueryString.stringify({
         source: "ko",
-        target: this.$store.state.countries[this.$store.state.country],
+        target: this.$store.state.countries[this.getCountry],
         text: this.input,
       });
 
