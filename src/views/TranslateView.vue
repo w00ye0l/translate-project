@@ -85,7 +85,7 @@ export default {
     async getData() {
       const params = QueryString.stringify({
         source: "ko",
-        target: this.$store.state.countries[this.countrySelected],
+        target: this.$store.state.countries[this.$store.state.country],
         text: this.input,
       });
 
@@ -99,17 +99,18 @@ export default {
         },
       };
 
-      console.log(config);
+      // console.log(params);
+      // console.log(config);
 
       try {
         this.$store.commit("startSpinner");
-        console.log(this.$store.state.loadingStatus);
+        // console.log(this.$store.state.loadingStatus);
 
         await this.$axios
           .post("/papago/n2mt", params, config)
           .then((res) => {
             this.$store.commit("endSpinner");
-            console.log(this.$store.state.loadingStatus);
+            // console.log(this.$store.state.loadingStatus);
 
             if (res.status == 200) {
               console.log(res.data.message.result.translatedText);
@@ -119,12 +120,12 @@ export default {
           .catch((err) => {
             console.log("실패", err);
             this.$store.commit("endSpinner");
-            console.log(this.$store.state.loadingStatus);
+            // console.log(this.$store.state.loadingStatus);
           });
       } catch (err) {
         console.log("실패", err);
         this.$store.commit("endSpinner");
-        console.log(this.$store.state.loadingStatus);
+        // console.log(this.$store.state.loadingStatus);
       }
     },
   },
