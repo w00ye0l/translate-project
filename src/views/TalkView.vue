@@ -101,7 +101,30 @@ export default {
         return;
       }
 
-      const lang = "ko-KR";
+      let lang = "";
+
+      if (this.$store.state.countries[this.getCountry] == "en") {
+        lang = "en-US";
+      } else if (this.$store.state.countries[this.getCountry] == "ja") {
+        lang = "ja-JP";
+      } else if (this.$store.state.countries[this.getCountry] == "zh-CN") {
+        lang = "zh-CN";
+      } else if (this.$store.state.countries[this.getCountry] == "id") {
+        lang = "id-ID";
+      } else if (this.$store.state.countries[this.getCountry] == "de") {
+        lang = "de-DE";
+      } else if (this.$store.state.countries[this.getCountry] == "ru") {
+        lang = "ru-RU";
+      } else if (this.$store.state.countries[this.getCountry] == "es") {
+        lang = "es-ES";
+      } else if (this.$store.state.countries[this.getCountry] == "it") {
+        lang = "it-IT";
+      } else if (this.$store.state.countries[this.getCountry] == "fr") {
+        lang = "fr-FR";
+      } else {
+        lang = "en-US";
+      }
+
       const utterThis = new SpeechSynthesisUtterance(text);
 
       // utterThis.onend = (e) => {
