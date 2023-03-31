@@ -36,17 +36,17 @@ export const store = new Vuex.Store({
       숙소: "hotel",
     },
     languages: [
-      "en",
-      "ja",
-      "zh-CN",
-      "vi",
-      "id",
-      "th",
-      "de",
-      "ru",
-      "es",
-      "it",
-      "fr",
+      "en", // O
+      "ja", // O
+      "zh-CN", // O
+      "vi", // X
+      "id", // O
+      "th", // X
+      "de", // O
+      "ru", // O
+      "es", // O
+      "it", // O
+      "fr", // O
     ],
     loadingStatus: false,
     talkList: {},
