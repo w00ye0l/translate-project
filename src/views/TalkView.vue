@@ -40,7 +40,7 @@
       >
         <div class="result">
           <p class="korean__text">{{ key }}</p>
-          <p class="foreign__text" ref="translatedText">{{ value }}</p>
+          <p class="foreign__text">{{ value }}</p>
         </div>
 
         <div class="icon__container">
