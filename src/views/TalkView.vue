@@ -40,11 +40,11 @@
       >
         <div class="result">
           <p class="korean__text">{{ key }}</p>
-          <p class="foreign__text">{{ value }}</p>
+          <p class="foreign__text" ref="translatedText">{{ value }}</p>
         </div>
 
         <div class="icon__container">
-          <div class="icon__div" v-on:click="copyClipboard">
+          <div class="icon__div" v-on:click="copyClipboard(value)">
             <font-awesome-icon
               class="clipboard__icon"
               :icon="['fas', 'clipboard']"
@@ -81,10 +81,9 @@ export default {
     this.voices = window.speechSynthesis.getVoices();
   },
   methods: {
-    copyClipboard(event) {
-      const text = event.currentTarget.parentElement.parentElement
-        .querySelector(".result")
-        .querySelector(".foreign__text").innerText;
+    copyClipboard(value) {
+      const text = value;
+      // console.log(text);
 
       this.$copyText(text).then(() => {
         alert("복사 완료");
