@@ -136,7 +136,8 @@ export default {
 
       let voiceFound = false;
 
-      // console.log(this.voices);
+      console.log(this.voices);
+      console.log(lang);
 
       for (let i = 0; i < this.voices.length; i++) {
         if (
