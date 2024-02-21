@@ -93,6 +93,8 @@ export default {
         baseURL: "https://openapi.naver.com/v1",
         headers: {
           "x-cors-api-key": process.env.VUE_APP_X_CORS_API_KEY,
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers": "*",
           "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
           "X-Naver-Client-Id": process.env.VUE_APP_X_NAVER_CLIENT_ID,
           "X-Naver-Client-Secret": process.env.VUE_APP_X_NAVER_CLIENT_SECRET,
