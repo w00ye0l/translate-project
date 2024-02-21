@@ -90,9 +90,7 @@ export default {
       });
 
       const config = {
-        baseURL: "https://openapi.naver.com/v1",
         headers: {
-          "x-cors-api-key": process.env.VUE_APP_X_CORS_API_KEY,
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Headers": "*",
           "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
@@ -101,15 +99,12 @@ export default {
         },
       };
 
-      // console.log(params);
-      // console.log(config);
-
       try {
         this.$store.commit("startSpinner");
         // console.log(this.$store.state.loadingStatus);
 
         await this.$axios
-          .post("/papago/n2mt", params, config)
+          .post("/api", params, config)
           .then((res) => {
             this.$store.commit("endSpinner");
             // console.log(this.$store.state.loadingStatus);
