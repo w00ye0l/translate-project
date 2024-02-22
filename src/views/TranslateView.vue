@@ -93,7 +93,10 @@ export default {
           "X-Naver-Client-Secret": process.env.VUE_APP_X_NAVER_CLIENT_SECRET,
         };
 
-        const res = await this.$axios.post("/api", formData, { headers });
+        const data = new URLSearchParams(formData).toString;
+        console.log(data);
+
+        const res = await this.$axios.post("/api", data, { headers });
 
         this.$store.commit("endSpinner");
 
