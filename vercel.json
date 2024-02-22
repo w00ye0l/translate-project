@@ -9,7 +9,6 @@
     {
       "source": "/api/:path*",
       "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "*" },
         { "key": "X-Naver-Client-Id", "value": "2Rql9F4A4qbEI2DhUe2i" },
         { "key": "X-Naver-Client-Secret", "value": "QGlM99Zhql" }
       ]
