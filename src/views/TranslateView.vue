@@ -45,7 +45,6 @@
 <script>
 import HeadComponent from "@/components/HeadComponent.vue";
 import NavComponent from "@/components/NavComponent.vue";
-import QueryString from "qs";
 
 export default {
   name: "TranslateView",
@@ -77,28 +76,23 @@ export default {
   },
   methods: {
     async getData() {
-      const params = QueryString.stringify({
+      const formData = {
         source: "ko",
         target: this.$store.state.countries[this.getCountry],
         text: this.input,
-      });
-      const config = {
-        baseURL: "https://openapi.naver.com/v1",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-          "X-Naver-Client-Id": process.env.VUE_APP_X_NAVER_CLIENT_ID,
-          "X-Naver-Client-Secret": process.env.VUE_APP_X_NAVER_CLIENT_SECRET,
-        },
       };
-
-      console.log(params);
-      console.log(config);
+      const headers = {
+        "X-Naver-Client-Id": process.env.VUE_APP_X_NAVER_CLIENT_ID,
+        "X-Naver-Client-Secret": process.env.VUE_APP_X_NAVER_CLIENT_SECRET,
+      };
 
       try {
         this.$store.commit("startSpinner");
         // console.log(this.$store.state.loadingStatus);
         await this.$axios
-          .post("/papago/n2mt", params, config)
+          .post("https://openapi.naver.com/v1/papago/n2mt", formData, {
+            headers,
+          })
           .then((res) => {
             this.$store.commit("endSpinner");
             // console.log(this.$store.state.loadingStatus);
