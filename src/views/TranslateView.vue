@@ -45,7 +45,6 @@
 <script>
 import HeadComponent from "@/components/HeadComponent.vue";
 import NavComponent from "@/components/NavComponent.vue";
-import QueryString from "qs";
 
 export default {
   name: "TranslateView",
@@ -54,16 +53,10 @@ export default {
     placeSelected: "",
     input: "",
     result: "",
-    // lang: "",
   }),
   components: {
     HeadComponent,
     NavComponent,
-  },
-  created() {
-    // this.$store.state.country = sessionStorage.getItem("country");
-    // this.$store.state.place = sessionStorage.getItem("place");
-    // this.lang = this.$store.state.countries[this.$store.state.country];
   },
   computed: {
     getCountry() {
