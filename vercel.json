@@ -9,6 +9,11 @@
     {
       "source": "/api/:path*",
       "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT"
+        },
         { "key": "X-Naver-Client-Id", "value": "2Rql9F4A4qbEI2DhUe2i" },
         { "key": "X-Naver-Client-Secret", "value": "QGlM99Zhql" }
       ]

@@ -84,10 +84,9 @@ export default {
       });
 
       const config = {
-        baseURL: "https://proxy.cors.sh/https://openapi.naver.com/v1",
+        baseURL: "https://openapi.naver.com/v1",
         headers: {
           "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-          "x-cors-api-key": process.env.VUE_APP_X_CORS_API_KEY,
           "X-Naver-Client-Id": process.env.VUE_APP_X_NAVER_CLIENT_ID,
           "X-Naver-Client-Secret": process.env.VUE_APP_X_NAVER_CLIENT_SECRET,
         },
