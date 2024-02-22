@@ -5,7 +5,8 @@
       "destination": "https://openapi.naver.com/:path*",
       "headers": [
         { "key": "X-Naver-Client-Id", "value": "2Rql9F4A4qbEI2DhUe2i" },
-        { "key": "X-Naver-Client-Secret", "value": "QGlM99Zhql" }
+        { "key": "X-Naver-Client-Secret", "value": "QGlM99Zhql" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
       ]
     }
   ]
