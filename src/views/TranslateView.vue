@@ -86,26 +86,24 @@ export default {
 
       try {
         this.$store.commit("startSpinner");
-        // console.log(this.$store.state.loadingStatus);
 
-        const header = {
+        const headers = {
           "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
           "X-Naver-Client-Id": process.env.VUE_APP_X_NAVER_CLIENT_ID,
           "X-Naver-Client-Secret": process.env.VUE_APP_X_NAVER_CLIENT_SECRET,
         };
 
-        const res = await this.$axios.post("/api", formData, { header });
+        const res = await this.$axios.post("/api", formData, { headers });
 
         this.$store.commit("endSpinner");
 
-        if (res.status == 200) {
+        if (res.status === 200) {
           console.log(res.data.message.result.translatedText);
           this.result = res.data.message.result.translatedText;
         }
       } catch (err) {
         console.log("실패", err);
         this.$store.commit("endSpinner");
-        // console.log(this.$store.state.loadingStatus);
       }
     },
   },
