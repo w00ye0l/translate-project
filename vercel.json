@@ -1,8 +1,12 @@
 {
   "rewrites": [
     {
-      "source": "/api",
-      "destination": "https://openapi.naver.com/v1/papago/n2mt"
+      "source": "/api/:path*",
+      "destination": "https://openapi.naver.com/:path*",
+      "headers": [
+        { "key": "X-Naver-Client-Id", "value": "2Rql9F4A4qbEI2DhUe2i" },
+        { "key": "X-Naver-Client-Secret", "value": "QGlM99Zhql" }
+      ]
     }
   ]
 }

@@ -3,12 +3,9 @@ module.exports = defineConfig({
   transpileDependencies: true,
   devServer: {
     proxy: {
-      "/api": {
+      "/api/:path*": {
         target: "https://openapi.naver.com",
         changeOrigin: true,
-        pathRewrite: {
-          "^/api": "/v1/papago/n2mt",
-        },
         headers: {
           "Access-Control-Allow-Origin": "*",
         },
