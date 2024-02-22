@@ -9,6 +9,9 @@ module.exports = defineConfig({
         pathRewrite: {
           "^/api": "/v1/papago/n2mt",
         },
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
       },
     },
   },
