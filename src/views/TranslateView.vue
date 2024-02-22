@@ -93,7 +93,11 @@ export default {
           "X-Naver-Client-Secret": process.env.VUE_APP_X_NAVER_CLIENT_SECRET,
         };
 
-        const res = await this.$axios.post("/api", formData, { headers });
+        const res = await this.$axios.post(
+          "https://openapi.naver.com/v1/papago/n2mt",
+          formData,
+          { headers }
+        );
 
         this.$store.commit("endSpinner");
 
