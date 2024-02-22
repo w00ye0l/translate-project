@@ -76,25 +76,25 @@ export default {
   },
   methods: {
     async getData() {
-      const params = {
+      const formData = {
         source: "ko",
         target: this.$store.state.countries[this.getCountry],
         text: this.input,
       };
 
+      console.log(formData);
+
       try {
         this.$store.commit("startSpinner");
         // console.log(this.$store.state.loadingStatus);
 
-        const config = {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-            "X-Naver-Client-Id": process.env.VUE_APP_X_NAVER_CLIENT_ID,
-            "X-Naver-Client-Secret": process.env.VUE_APP_X_NAVER_CLIENT_SECRET,
-          },
+        const header = {
+          "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+          "X-Naver-Client-Id": process.env.VUE_APP_X_NAVER_CLIENT_ID,
+          "X-Naver-Client-Secret": process.env.VUE_APP_X_NAVER_CLIENT_SECRET,
         };
 
-        const res = await this.$axios.post("/api", params, config);
+        const res = await this.$axios.post("/api", formData, { header });
 
         this.$store.commit("endSpinner");
 
@@ -166,7 +166,6 @@ export default {
   margin: 2rem 0;
   padding: 0.8rem;
   width: 10rem;
-  height: 3rem;
   color: white;
   font-size: 18px;
   font-weight: bold;
