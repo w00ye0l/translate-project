@@ -1,13 +1,13 @@
 {
   "rewrites": [
     {
-      "source": "/api/:path*",
+      "source": "/:path*",
       "destination": "https://openapi.naver.com/:path*"
     }
   ],
   "headers": [
     {
-      "source": "/api/:path*",
+      "source": "/:path*",
       "headers": [
         { "key": "X-Naver-Client-Id", "value": "2Rql9F4A4qbEI2DhUe2i" },
         { "key": "X-Naver-Client-Secret", "value": "QGlM99Zhql" },

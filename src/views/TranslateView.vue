@@ -90,7 +90,7 @@ export default {
         this.$store.commit("startSpinner");
         // console.log(this.$store.state.loadingStatus);
         await this.$axios
-          .post("/api/v1/papago/n2mt", formData, {
+          .post("/v1/papago/n2mt", formData, {
             headers,
           })
           .then((res) => {
