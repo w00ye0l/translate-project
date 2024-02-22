@@ -90,7 +90,7 @@ export default {
         this.$store.commit("startSpinner");
         // console.log(this.$store.state.loadingStatus);
         await this.$axios
-          .post("https://openapi.naver.com/v1/papago/n2mt", formData, {
+          .post("/api", formData, {
             headers,
           })
           .then((res) => {
