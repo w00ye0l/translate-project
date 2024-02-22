@@ -83,7 +83,7 @@ export default {
       };
 
       const config = {
-        baseURL: "/papago/n2mt",
+        baseURL: "https://openapi.naver.com/v1",
         headers: {
           "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
           "X-Naver-Client-Id": process.env.VUE_APP_X_NAVER_CLIENT_ID,
