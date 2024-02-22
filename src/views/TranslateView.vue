@@ -45,6 +45,7 @@
 <script>
 import HeadComponent from "@/components/HeadComponent.vue";
 import NavComponent from "@/components/NavComponent.vue";
+import QueryString from "qs";
 
 export default {
   name: "TranslateView",
@@ -76,41 +77,45 @@ export default {
   },
   methods: {
     async getData() {
-      const formData = {
+      const params = QueryString.stringify({
         source: "ko",
         target: this.$store.state.countries[this.getCountry],
         text: this.input,
-      };
-
-      console.log(formData);
-
-      try {
-        this.$store.commit("startSpinner");
-
-        const headers = {
+      });
+      const config = {
+        baseURL: "https://openapi.naver.com/v1",
+        headers: {
           "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
           "X-Naver-Client-Id": process.env.VUE_APP_X_NAVER_CLIENT_ID,
           "X-Naver-Client-Secret": process.env.VUE_APP_X_NAVER_CLIENT_SECRET,
-        };
+        },
+      };
 
-        const data = new URLSearchParams(formData).toString();
-        console.log(data);
+      console.log(params);
+      console.log(config);
 
-        const res = await this.$axios.post(
-          "https://openapi.naver.com/v1/papago/n2mt",
-          data,
-          { headers }
-        );
-
-        this.$store.commit("endSpinner");
-
-        if (res.status === 200) {
-          console.log(res.data.message.result.translatedText);
-          this.result = res.data.message.result.translatedText;
-        }
+      try {
+        this.$store.commit("startSpinner");
+        // console.log(this.$store.state.loadingStatus);
+        await this.$axios
+          .post("/papago/n2mt", params, config)
+          .then((res) => {
+            this.$store.commit("endSpinner");
+            // console.log(this.$store.state.loadingStatus);
+            if (res.status == 200) {
+              console.log(res.data.message.result.translatedText);
+              this.result = res.data.message.result.translatedText;
+            }
+          })
+          .catch((err) => {
+            console.log("실패", err);
+            this.$store.commit("endSpinner");
+            // console.log(this.$store.state.loadingStatus);
+          });
       } catch (err) {
         console.log("실패", err);
         this.$store.commit("endSpinner");
+        // console.log(this.$store.state.loadingStatus);
       }
     },
   },
