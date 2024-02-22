@@ -69,7 +69,7 @@ export default {
   gap: 0 5vw;
 }
 .place__div {
-  margin: 1rem auto;
+  margin: 1rem 0;
   padding: 0.5rem 0;
   display: flex;
   flex-direction: column;
@@ -82,11 +82,9 @@ export default {
 }
 .select {
   width: 100%;
-  max-width: 20rem;
 }
 .self {
   width: 100%;
-  max-width: 800px;
   height: 7rem;
 }
 .place__div:hover {
