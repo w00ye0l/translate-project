@@ -83,42 +83,32 @@ export default {
   },
   methods: {
     async getData() {
-      const params = QueryString.stringify({
+      const params = {
         source: "ko",
         target: this.$store.state.countries[this.getCountry],
         text: this.input,
-      });
-
-      const config = {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Headers": "*",
-          "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-          "X-Naver-Client-Id": process.env.VUE_APP_X_NAVER_CLIENT_ID,
-          "X-Naver-Client-Secret": process.env.VUE_APP_X_NAVER_CLIENT_SECRET,
-        },
       };
 
       try {
         this.$store.commit("startSpinner");
         // console.log(this.$store.state.loadingStatus);
 
-        await this.$axios
-          .post("/api", params, config)
-          .then((res) => {
-            this.$store.commit("endSpinner");
-            // console.log(this.$store.state.loadingStatus);
+        const config = {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "X-Naver-Client-Id": process.env.VUE_APP_X_NAVER_CLIENT_ID,
+            "X-Naver-Client-Secret": process.env.VUE_APP_X_NAVER_CLIENT_SECRET,
+          },
+        };
 
-            if (res.status == 200) {
-              console.log(res.data.message.result.translatedText);
-              this.result = res.data.message.result.translatedText;
-            }
-          })
-          .catch((err) => {
-            console.log("실패", err);
-            this.$store.commit("endSpinner");
-            // console.log(this.$store.state.loadingStatus);
-          });
+        const res = await this.$axios.post("/api", params, config);
+
+        this.$store.commit("endSpinner");
+
+        if (res.status == 200) {
+          console.log(res.data.message.result.translatedText);
+          this.result = res.data.message.result.translatedText;
+        }
       } catch (err) {
         console.log("실패", err);
         this.$store.commit("endSpinner");
