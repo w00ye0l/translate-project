@@ -96,7 +96,11 @@ export default {
         const data = new URLSearchParams(formData).toString();
         console.log(data);
 
-        const res = await this.$axios.post("/api", data, { headers });
+        const res = await this.$axios.post(
+          "https://openapi.naver.com/v1/papago/n2mt",
+          data,
+          { headers }
+        );
 
         this.$store.commit("endSpinner");
 
