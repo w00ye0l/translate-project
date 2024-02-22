@@ -1,17 +1,17 @@
 {
   "rewrites": [
     {
-      "source": "/:path*",
-      "destination": "https://openapi.naver.com/:path*"
+      "source": "/api/:path*",
+      "destination": "https://openapi.naver.com/v1/:path*"
     }
   ],
   "headers": [
     {
-      "source": "/:path*",
+      "source": "/api/:path*",
       "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
         { "key": "X-Naver-Client-Id", "value": "2Rql9F4A4qbEI2DhUe2i" },
-        { "key": "X-Naver-Client-Secret", "value": "QGlM99Zhql" },
-        { "key": "Access-Control-Allow-Origin", "value": "*" }
+        { "key": "X-Naver-Client-Secret", "value": "QGlM99Zhql" }
       ]
     }
   ]

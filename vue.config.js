@@ -3,8 +3,8 @@ module.exports = defineConfig({
   transpileDependencies: true,
   devServer: {
     proxy: {
-      "/:path*": {
-        target: "https://openapi.naver.com",
+      "/api/:path*": {
+        target: "https://openapi.naver.com/v1/:path*",
         changeOrigin: true,
         headers: {
           "Access-Control-Allow-Origin": "*",

@@ -81,18 +81,21 @@ export default {
         target: this.$store.state.countries[this.getCountry],
         text: this.input,
       };
-      const headers = {
-        "X-Naver-Client-Id": process.env.VUE_APP_X_NAVER_CLIENT_ID,
-        "X-Naver-Client-Secret": process.env.VUE_APP_X_NAVER_CLIENT_SECRET,
+
+      const config = {
+        baseURL: "/papago/n2mt",
+        headers: {
+          "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+          "X-Naver-Client-Id": process.env.VUE_APP_X_NAVER_CLIENT_ID,
+          "X-Naver-Client-Secret": process.env.VUE_APP_X_NAVER_CLIENT_SECRET,
+        },
       };
 
       try {
         this.$store.commit("startSpinner");
         // console.log(this.$store.state.loadingStatus);
         await this.$axios
-          .post("/v1/papago/n2mt", formData, {
-            headers,
-          })
+          .post("/papago/n2mt", formData, config)
           .then((res) => {
             this.$store.commit("endSpinner");
             // console.log(this.$store.state.loadingStatus);
