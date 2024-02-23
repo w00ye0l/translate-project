@@ -53,11 +53,11 @@ export const store = new Vuex.Store({
   },
   mutations: {
     startSpinner(state) {
-      console.log("start");
+      // console.log("start");
       state.loadingStatus = true;
     },
     endSpinner(state) {
-      console.log("end");
+      // console.log("end");
       state.loadingStatus = false;
     },
     STORE_COUNTRY(state, payload) {

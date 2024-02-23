@@ -83,26 +83,17 @@ export default {
         text: this.input,
       });
 
-      const config = {
-        baseURL:
-          "https://port-0-cors-anywhere-12fhqa2blnn95c35.sel5.cloudtype.app/https://openapi.naver.com/v1",
-        headers: {
-          "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-          "X-Naver-Client-Id": process.env.VUE_APP_X_NAVER_CLIENT_ID,
-          "X-Naver-Client-Secret": process.env.VUE_APP_X_NAVER_CLIENT_SECRET,
-        },
-      };
-
       try {
         this.$store.commit("startSpinner");
         // console.log(this.$store.state.loadingStatus);
         await this.$axios
-          .post("/papago/n2mt", params, config)
+          .post(`${process.env.VUE_APP_API_URL}/prod/translate`, params)
           .then((res) => {
             this.$store.commit("endSpinner");
             // console.log(this.$store.state.loadingStatus);
+
             if (res.status == 200) {
-              console.log(res.data.message.result.translatedText);
+              // console.log(res.data.message.result.translatedText);
               this.result = res.data.message.result.translatedText;
             }
           })
