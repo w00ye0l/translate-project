@@ -84,8 +84,7 @@ export default {
       });
 
       const config = {
-        baseURL:
-          "https://port-0-cors-anywhere-12fhqa2blnn95c35.sel5.cloudtype.app/https://openapi.naver.com/v1",
+        baseURL: "/api",
         headers: {
           "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
           "X-Naver-Client-Id": process.env.VUE_APP_X_NAVER_CLIENT_ID,
